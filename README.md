@@ -69,21 +69,29 @@ Welcome to **Red.Bae**, a full-stack E-Commerce web application built with **Rea
 ## 🖼️ Screenshots
 
 ### 🏠 Homepage  
+A clean and responsive landing page showing featured products and navigation.
+
 ![Homepage](./ScreenShots/2.png)
 
 ---
 
 ### 🛍️ Products Page  
+Browse all available used PCs, laptops, and parts. Includes search, sort, and filters.
+
 ![Products](./ScreenShots/3.png)
 
 ---
 
 ### 🔍 Product Detail Page  
+Shows product description, pricing, images, and review options.
+
 ![Product Detail](./ScreenShots/4.png)
 
 ---
 
 ### 🛒 Cart Page  
+Displays items added to the cart with quantity controls and total cost.
+
 ![Cart](./ScreenShots/1.png)
 
 ---
