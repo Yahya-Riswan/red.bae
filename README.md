@@ -1,141 +1,71 @@
-# 🖥️ Red.Bae — Used PC E-Commerce Web App
+# Getting Started with Create React App
 
-A fully functional **React-based eCommerce application** for **used PCs**, **laptops**, and **PC parts**, featuring **authentication**, **search**, **filtering**, **cart**, **ratings**, and **checkout** — all backed by **JSON Server**.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-> 🔐 Admin & User access | 🛒 Persistent Cart | 🔎 Dynamic Filters | 💳 Dummy Checkout | ⭐ User Reviews
+## Available Scripts
 
----
+In the project directory, you can run:
 
-## 🚀 Features
+### `npm start`
 
-### 🔐 1. User Authentication
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-- User **Registration** and **Login** powered by **JSON Server**.
-- Role-based login for **Users** and **Admins**.
-- Session is securely stored in **LocalStorage**.
-- Actions like *add to cart*, *checkout*, and *wishlist* are **restricted for unauthenticated users**.
-- **Logout** completely clears:
-  - Cart  
-  - Wishlist  
-  - Session
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
----
+### `npm test`
 
-### 🛍️ 2. Product Listing & Search
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- Dynamic fetching of products from the server.
-- Powerful frontend features:
-  - 🔎 **Live Search** (filter products by title)
-  - 🎯 **Category Filtering** (Sports, Casual, Formal, etc.)
-  - ↕️ **Sorting** (e.g., Price: Low to High)
-  - 🛑 Prevents **duplicate product entries**
+### `npm run build`
 
----
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### 📦 3. Product Details Page
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-- Clickable products open a **detailed product view**
-- Displays:
-  - ✅ Name  
-  - ✅ Description  
-  - ✅ Price  
-  - ✅ Category  
-  - ✅ Images
-  - ⭐ **Average Rating & User Reviews**
-- Allows **quantity selection** before adding to cart
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
----
+### `npm run eject`
 
-### ⭐ 4. Ratings & Reviews
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-- Logged-in users can **add product reviews**
-- Display **average rating** with stars
-- Show **all previous reviews**
-- Prevent duplicate reviews from the same user
-- Validates inputs for quality feedback
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
----
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-### 🛒 5. Cart Functionality
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-- Each **user has a unique cart** stored locally
-- On login, cart data is fetched for that user
-- Cart supports:
-  - ➕ Increment & ➖ Decrement of quantities
-  - ❌ Item removal
-  - 💰 Auto-calculated total price
-  - 💾 **Persistence across sessions**
-- Redirects **unauthenticated users** to login before adding to cart
+## Learn More
 
----
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-### 💳 6. Checkout & Payment
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-- Simulated **dummy checkout page**
-- On "payment":
-  - 🧹 Cart is cleared
-  - 📦 Order moved to **Orders Page**
-  - ✅ Confirmation message shown
+### Code Splitting
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-## 📁 Tech Stack
+### Analyzing the Bundle Size
 
-| Tech         | Role                  |
-|--------------|-----------------------|
-| **React**    | Frontend Framework    |
-| **React Router** | Navigation/Routing  |
-| **JSON Server** | Mock Backend API     |
-| **Axios**    | API Communication     |
-| **LocalStorage** | Session & Cart Storage |
-| **CSS Modules / SCSS** | Styling        |
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
----
+### Making a Progressive Web App
 
-## 🧠 Future Enhancements
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-- ✅ Admin Product Management (CRUD)  
-- ⏳ Real Payment Integration (e.g., Razorpay, Stripe)  
-- ⏳ Profile Page & Address Management  
-- ⏳ Email Verification
+### Advanced Configuration
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-## 📸 Screenshots
+### Deployment
 
-### 🏠 Homepage
-A clean and responsive landing page showing featured products and navigation.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-![Homepage](./ScreenShots/2.png)
+### `npm run build` fails to minify
 
----
-
-### 🛍️ Products Page
-Browse all available used PCs, laptops, and parts. Includes search, sort, and filters.
-
-![Productspage](./ScreenShots/3.png)
-
----
-
-### 🔍 Product Detail Page
-Shows product description, pricing, images, and review options.
-
-![Detialpage](./ScreenShots/4.png)
-
----
-
-### 🛒 Cart Pagee
-Displays items added to the cart with quantity controls and total cost.
-
-![Cartpage](./ScreenShots/1.png)
-
----
-
-## ⚙️ Getting Started
-
-### 📦 Installation
-
-```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
-npm install
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+"# red.bae" 
