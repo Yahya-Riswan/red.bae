@@ -1,0 +1,175 @@
+.home{
+    /* padding: 20px 10%; */
+    /* margin-top: 60px; */
+}
+
+.home .spotlight{
+    background-image: url(../../Assets/spotloight_banner.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1920 / 722;
+    margin-bottom: 50px; 
+}
+.home .spotlight h1{
+    padding: 5% 4% 0;
+    color: white;
+    font-size: clamp(16px, 4vw, 45px);
+    font-family: subsecondary;
+}
+.home .spotlight .link{
+    width: fit-content;
+    margin: 10px 4%;
+    color: black;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    font-family: secondary;
+    letter-spacing: 1px;
+}
+.home .line{
+    height: 1px;
+    width: 100%;
+    margin: 100px 0;
+    background-color: lightgray;
+}
+.home .partners h1{
+    font-family:secondary;
+}
+.home .partners .imgs{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.home .partners .imgs img{
+    height: 50px;
+    width: auto;
+}
+.home .policy{
+    display: flex;
+    flex-direction: row;
+}
+.home .policy .left{
+    min-width: 50%;
+}
+.home .policy .left img{
+    width: 100%;
+}
+.home .policy .right{
+    padding: 50px;
+    font-family: subsecondary;
+}
+.home .policy .right h1:nth-child(1){
+    color: lightgrey;
+}
+.home .bestseller>h1{
+    font-size: 22px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.home .bestseller>h1 span{
+    font-family: subsecondary;
+}
+.home .bestseller>h1 .link{
+    color: #939292;
+    text-decoration: underline;
+}
+.home .bestseller .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* gap: 20px; */
+}
+.home .browse{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+.home .browse .left{
+    margin: 20px;
+    background-image: url(../../Assets/browse_pc.jpg);
+    /* background-size: contain; */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 640 / 800;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+.home .browse .right{
+    margin: 20px;
+    background-image: url(../../Assets/browse_laptops.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 640 / 800;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.home .browse div .link{
+    width: 200px;
+    /* margin: 10px 4%; */
+    color: #545454;
+    padding: 10px;
+    background-color: #e3e8e9;
+    /* border-radius: 10px; */
+    text-align: center;
+    font-family: subsecondary;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+    transition: all 0.5s ease;
+}
+.home .browse div h1{
+    color: #e3e8e9;
+    margin-bottom: 20px;
+    font-family: subsecondary;
+
+}
+.home .browse div .link:hover{
+    border-radius: 25px;
+}
+.home .howwe{
+    text-align: center;
+    font-family: secondary;
+    font-size: 18px;
+}
+.home .howwe img{
+    margin-top: 40px;
+    width: 100%;
+}
+
+.home .recent>h1{
+    font-size: 22px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.home .recent>h1 span{
+    font-family: subsecondary;
+}
+.home .recent>h1 .link{
+    color: #939292;
+    text-decoration: underline;
+}
+.home .recent .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* gap: 20px; */
+}

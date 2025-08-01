@@ -1,0 +1,34 @@
+.error{
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* text-align: center; */
+    align-items: center;
+
+}
+.error h1{
+    font-family: secondary;
+    font-size: 70px;
+    letter-spacing: 5px;
+}
+.error p{
+    font-family: subsecondary;
+    margin-top: 30px;
+    font-size: 20px;
+    letter-spacing: 5px;
+}
+.error .btn{
+    margin-top: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    font-family: subsecondary;
+    transition: all 0.5s ease;
+}
+.error .btn:hover{
+    background-color: white;
+    color: black;
+}

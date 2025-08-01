@@ -1,0 +1,17 @@
+.wishlistdiv{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.h1wish{
+    font-family: subsecondary;
+    text-align: center;
+}
+.h2wish{
+    margin-top: 200px;
+    width: 100%;
+    color:#ddd;
+    font-family: subsecondary;
+    text-align: center;
+    font-size: 18px;
+}

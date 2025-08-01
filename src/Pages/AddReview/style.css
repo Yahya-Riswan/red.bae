@@ -1,0 +1,60 @@
+.addreview{
+    width: 100%;
+}
+
+.addreview .aproduct{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.addreview .aproduct img{
+    width: 20%;
+    margin-right: 5%;
+}
+.addreview .aproduct h4{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+}
+.addreview .reviews{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+    margin: 0 auto;
+}
+.addreview .reviews input{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+}
+.addreview .reviews textarea{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    resize: none;
+}
+.addreview .reviews button{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 6px;
+    color: white;
+    font-family: subsecondary;
+    background-color: black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.addreview .reviews button:hover{
+    color: black;
+    background-color: white;
+}
+.addreview .reviews pre{
+    color: red;
+    text-align: center;
+}

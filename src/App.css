@@ -1,0 +1,87 @@
+.appcontent{
+    min-height: 100vh;
+    padding: 80px 10%;
+}
+.showproducts{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.showproducts .left{
+    padding-top: 30px;
+    width: 20%;
+    border-right: 1px solid #ddd;
+}
+.showproducts .right{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.showproducts .right .top{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.noproducts{
+    text-align: center;
+    margin-top: 50px;
+    color: grey;
+    font-family: subsecondary;
+}
+.filter{
+    width: 100%;
+
+}
+.filterbox{
+    padding: 10px 10px;
+    margin: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.filterbox h3{
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.filterbox h4{
+    color: #000;
+    font-size: 13px;
+    text-align: center;
+
+}
+.filterbox input[type="number"]{
+    width: 100%;
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+/* For Chrome, Safari, Edge, and Opera */
+.no-arrows::-webkit-outer-spin-button,
+.no-arrows::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+.no-arrows {
+  -moz-appearance: textfield;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  margin: 0 4px;
+  background-color: #f1f1f1;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination button.active-page {
+  background-color: black;
+  color: white;
+}

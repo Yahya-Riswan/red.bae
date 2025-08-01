@@ -1,0 +1,16 @@
+.star-rating {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 3rem;
+  user-select: none;
+}
+
+.star {
+  color: lightgray;
+  transition: color 0.2s;
+}
+
+.star.filled {
+  color: gold;
+}

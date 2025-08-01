@@ -1,0 +1,25 @@
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  z-index: -1;
+  font-size: 24px;
+  color: white;
+  -webkit-text-stroke: 1px lightgray;
+}
+
+.stars-outer::before {
+  content: '★★★★★';
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: lightgray; 
+}
+
+.stars-inner::before {
+  content: '★★★★★';
+}

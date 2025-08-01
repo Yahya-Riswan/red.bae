@@ -1,0 +1,64 @@
+.db{
+    padding-top:100px ;
+}
+.item.updated{
+    background-color: antiquewhite;
+}
+.item img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+.item{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 3fr 3fr 1fr 1fr 1fr 1fr;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+}
+.item .img{
+    visibility: hidden;
+}
+.item input{
+    margin: 10px;
+    text-align: center;
+    font-family: subsecondary;
+
+}
+.item button{
+    margin: 10px;
+}
+.item textarea{
+    margin: 10px;
+    height: 100px;
+    resize: none;
+    font-family: subsecondary;
+
+}
+.item .update{
+    padding: 10px 20px;
+    background-color: green;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-family: subsecondary;
+  cursor: pointer;
+
+}
+.item .update:disabled {
+  background-color: rgb(72, 145, 72);
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.item .delete{
+    padding: 10px 20px;
+    background-color: red;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-family: subsecondary;
+  cursor: pointer;
+
+}

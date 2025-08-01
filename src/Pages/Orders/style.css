@@ -1,0 +1,16 @@
+.h1order{
+    font-family: subsecondary;
+    text-align: center;
+}
+.h2order{
+    margin-top: 200px;
+    width: 100%;
+    color:#ddd;
+    font-family: subsecondary;
+    text-align: center;
+    font-size: 18px;
+}
+.orders .content{
+    border: 1px solid #ddd;
+    padding: 10px;
+}
