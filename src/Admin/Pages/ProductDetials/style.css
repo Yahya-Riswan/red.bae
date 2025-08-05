@@ -1,0 +1,97 @@
+.productdetpage{
+    width: 100%;
+    padding: 50px;
+}
+.productdetpage .maincontent{
+    display: flex;
+    flex-direction: row;
+}
+.productdetpage .maincontent .left{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    border: 1px solid #ddd;
+    position: relative;
+}
+.productdetpage .maincontent .left .img{
+    min-width: 60%;
+    max-width: 90%;
+}
+.productdetpage .maincontent .right{
+    width: 60%;
+    padding: 40px;
+}
+.productdetpage .maincontent .right h3{
+    margin: 15px 0px;
+    color: #353535;
+}
+.productdetpage .maincontent .right .price{
+    padding: 5px 15px;
+    color: rgb(197, 54, 54);
+}
+
+
+.productdetpage .maincontent .right .reviews{
+    color: #cacaca;
+    margin-left: 10px;
+    align-items: center;
+    font-size: 18px;
+}
+.productdetpage .subcontent{
+    padding: 40px;
+}
+.productdetpage .subcontent .navs{
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+.productdetpage .subcontent .navs button{
+    cursor: pointer;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    margin: 0 5px;
+    background-color: white;
+}
+.productdetpage .subcontent .navs button:hover{
+    background-color: #ddd;
+}
+.productdetpage .subcontent .navs button.active{
+    background-color: #ddd;
+}
+.productdetpage .subcontent .content{
+    padding: 50px 0px;
+}
+.productdetpage .subcontent .content .c1 h3{
+    margin-bottom: 20px;
+}
+.productdetpage .subcontent .content .c1 p{
+    white-space: pre-wrap;
+}
+.productdetpage .subcontent .content .review{
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+
+}
+.productdetpage .maincontent .side{
+    width: 10%;
+
+}
+.productdetpage .maincontent .side img{
+    width: calc(100% - 10px);
+    height: auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin: 5px;
+    cursor: pointer;
+}
+.productdetpage .maincontent .side img:hover{
+    border: 1px solid black;
+}   
+.productdetpage .maincontent .side img.active{
+    border: 1px solid black;
+}

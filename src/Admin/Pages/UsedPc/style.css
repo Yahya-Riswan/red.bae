@@ -1,0 +1,82 @@
+.usedpc{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+.usedpc .graphs{
+    height: 300px;
+}
+.usedpc .content{
+    width: 90%;
+}
+.addproduct{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 157, 255);
+    border-radius: 50%;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+.addproduct:hover{
+    background-color: rgb(0, 135, 219);
+}
+.addproduct img{
+    width: 35px;
+    height: 35px;
+}
+.pop{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(211, 211, 211, 0.321);
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.pop .content{
+    width: 40%;
+    padding: 40px;
+    background-color: white;
+    border-radius: 25px;
+
+    text-align: center;
+    font-family: subsecondary;
+}
+.pop .content .btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 40px 0 0 0;
+}
+.pop .content .btns button{
+    cursor: pointer;
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: 2px solid black;
+    color: black;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+.pop .content .btns button.delete{
+    border: 2px solid red;
+    color: red;
+}
+.pop .content .btns button.delete:hover{
+    background-color: red;
+    color:white;
+}
+.pop .content .btns button.cancel:hover{
+    background-color: black;
+    color:white;
+}

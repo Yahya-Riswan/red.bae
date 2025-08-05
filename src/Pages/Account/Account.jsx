@@ -13,7 +13,9 @@ function Account() {
         const localuser = JSON.parse(localStorage.getItem("currentUser"));
         if (!localuser) {
             navigate("/Login");
-        } else {
+        } else if(localuser.role === "admin"){
+            navigate("/Admin/Dashboard")
+        }else {
             setUser(localuser);
             axios.get(`http://localhost:5000/users/${localuser.id}`)
                 .then((res) => setUser(res.data))

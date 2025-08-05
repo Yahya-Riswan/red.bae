@@ -1,0 +1,92 @@
+.userdetial{
+    width: 100%;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    overflow-y: auto !important;
+}
+.userdetial .detial{
+    padding: 20px;
+    width: 90%; 
+    border: 1px solid #ddd;
+    box-shadow: 3px 3px 5px lightgray;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.userdetial .detial .profile{
+    height: 150px;
+}
+.userdetial .detial .buttons{
+    padding: 20px;
+}
+.userdetial .detial .buttons button{
+    margin-left: 20px;
+    padding: 5px 12px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    background-color: white;
+}
+.userdetial .detial .buttons button:hover{
+    background-color:whitesmoke;
+}
+.userdetial .detial .buttons button.active{
+    color: rgb(0, 128, 23);
+}
+.userdetial .detial .buttons button.non-active{
+    color: rgb(255, 34, 0);
+}
+.userdetial .detial .buttons button.edit{
+    color: rgb(0, 135, 219);
+}
+.userdetial .detial .buttons button.remove{
+    color: rgb(255, 34, 0);
+}
+.userdetial .detial .timestamps{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.userdetial .pages{
+    margin: 50px 0;
+    padding: 20px;
+    width: 90%;
+    border: 1px solid #ddd;
+    box-shadow: 3px 3px 5px lightgray;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+.userdetial .pages .navs{
+    border-bottom: 1px solid #ddd;
+}
+.userdetial .pages .navs button{
+    padding: 5px 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    margin-right: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.userdetial .pages .navs button.active{
+    background-color: #ddd;
+}
+.userdetial .pages .page .carts{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.userdetial .pages .page .wishlist{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}

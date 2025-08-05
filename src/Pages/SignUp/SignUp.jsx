@@ -20,7 +20,7 @@ const SignUp = () => {
   const validate = () => {
     const err = {};
     if (form.username.trim().length < 3) err.username = "Min 3 characters";
-    if (!/^[\w.%+-]+@gmail\.com$/i.test(form.email)) err.email = "Enter Gmail only";
+    if (!/^[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i.test(form.email)) err.email = "Enter Gmail only";
     if (!/^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(form.password))
       err.password = "6+ characters & a number";
     setErrors(err);

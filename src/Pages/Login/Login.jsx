@@ -44,19 +44,24 @@ function Login() {
             );
 
             if (user) {
+                if (user.role === "admin") {
+                    localStorage.setItem("currentUser", JSON.stringify(user));
+                    setAlert("Logined Successfully");
+                    setAlertSt("success");
+                    navigate("/Admin/Dashboard");
+                    return;
+                }
+
                 if (user.status !== "active") {
                     setErrors({ general: "Your account is blocked or deactivated." });
                     return;
                 }
 
-
                 const localCart = JSON.parse(localStorage.getItem("cart")) || [];
                 const localWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-
-                const existingCart = user.cart || [];
-                const existingWishlist = user.wishlist || [];
-
+                const existingCart = Array.isArray(user.cart) ? user.cart : [];
+                const existingWishlist = Array.isArray(user.wishlist) ? user.wishlist : [];
 
                 const cartMap = new Map();
                 [...existingCart, ...localCart].forEach(item => {
@@ -64,13 +69,11 @@ function Login() {
                 });
                 const mergedCart = Array.from(cartMap.values());
 
-
                 const wishlistMap = new Map();
                 [...existingWishlist, ...localWishlist].forEach(item => {
                     wishlistMap.set(item.id, item);
                 });
                 const mergedWishlist = Array.from(wishlistMap.values());
-
 
                 const updatedUser = {
                     ...user,
@@ -79,30 +82,30 @@ function Login() {
                     last_logined: lastLogined()
                 };
 
-
                 await axios.put(`http://localhost:5000/users/${user.id}`, updatedUser);
 
                 localStorage.setItem("cart", JSON.stringify(mergedCart));
-                localStorage.setItem("orders", JSON.stringify([...user.orders]));
                 localStorage.setItem("wishlist", JSON.stringify(mergedWishlist));
+                localStorage.setItem("orders", JSON.stringify(user.orders || []));
                 localStorage.setItem("currentUser", JSON.stringify(updatedUser));
 
                 setUser(updatedUser);
-                const isAdmin = user?.role === "admin";
-                navigate(isAdmin ? "/Admin" : "/Account");
-                setAlert("Logined SuccessFully");
-                setAlertSt("success")
+
+                setAlert("Logined Successfully");
+                setAlertSt("success");
+
+                navigate("/Account");
             } else {
                 setErrors({ general: "Invalid email or password" });
             }
-
         } catch (error) {
             console.error("Login error:", error);
             setErrors({ general: "Login failed. Please try again." });
             setAlert("Login failed. Please try again.");
-            setAlertSt("error")
+            setAlertSt("error");
         }
     };
+
 
 
 

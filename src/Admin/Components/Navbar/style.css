@@ -1,0 +1,70 @@
+.sidebar {
+  height: 100vh;
+  background-color: #1f2937;
+  color: white;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  position: fixed;
+}
+
+.sidebar.expanded {
+  width: 200px;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.toggle-btn {
+  cursor: pointer;
+  padding: 1rem;
+  color: white;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+    gap: 20px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.menu li {
+    color: white;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.menu li:hover {
+  background-color: #374151;
+}
+.menu .active li{
+  background-color: #374151;
+}
+.icon {
+  max-width: 30px;
+}
+.icon.invert{
+    filter: invert(1);
+}
+.text {
+  max-height: 40px;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed .text {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+}
