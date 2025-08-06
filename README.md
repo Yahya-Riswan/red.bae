@@ -110,5 +110,5 @@ Displays items added to the cart with quantity controls and total cost.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/red-bae.git
+   git clone https://github.com/Yahya-Riswan/red-bae.git
    cd red-bae
