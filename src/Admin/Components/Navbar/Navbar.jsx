@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './style.css';
 import menu from "../../Assets/icons8-menu-50.png"
 import logo from "../../Assets/logo.png"
@@ -10,11 +10,10 @@ import Users from "../../Assets/icons8-users-48.png"
 import Pc from "../../Assets/icons8-pc-48.png"
 import Laptop from "../../Assets/icons8-laptop-48.png"
 import Parts from "../../Assets/icons8-tools-64.png"
+
 import logout from "../../Assets/icons8-logout-48.png"
 const Navbar = () => {
     const [open, setOpen] = useState(true);
-    const [nav, setNav] = useState(0);
-
     useEffect(()=>{
         if(open){
             document.getElementById("divnavbar").style.width = "200px"
@@ -22,6 +21,13 @@ const Navbar = () => {
             document.getElementById("divnavbar").style.width = "60px"
         }
     },[open])
+    const navigate = useNavigate()
+    const Logout=()=>{
+        localStorage.clear();
+        sessionStorage.clear();
+        navigate("/Login", {replace:true})
+        window.location.reload(); 
+    }
     return (
         <div className={`sidebar ${open ? 'expanded' : 'collapsed'}`}>
             <div className="toggle-btn" onClick={() => setOpen(!open)}>
@@ -35,7 +41,7 @@ const Navbar = () => {
                 <NavLink to={"/Admin/UsedPc"} className={({ isActive }) => isActive ? "active" : ""}><li><img src={Pc} alt="" className="icon" /><span className="text">Used Pc</span></li></NavLink>
                 <NavLink to={"/Admin/UsedLaptop"} className={({ isActive }) => isActive ? "active" : ""}><li><img src={Laptop} alt="" className="icon invert" /><span className="text">Used Laptop</span></li></NavLink>
                 <NavLink to={"/Admin/PcParts"} className={({ isActive }) => isActive ? "active" : ""}><li><img src={Parts} alt="" className="icon" /><span className="text">Pc Parts</span></li></NavLink>
-                <li><img src={logout} alt="" className="icon invert" /><span className="text">Logout</span></li>
+                <li onClick={Logout}><img src={logout} alt="" className="icon invert" /><span className="text">Logout</span></li>
             </ul>
         </div>
     );

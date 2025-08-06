@@ -33,21 +33,21 @@ function OrderDashboard() {
   }, []);
 
   const handleStatusChange = async (orderId, newStatus) => {
-  try {
-    setOrders(prev =>
-      prev.map(order =>
-        order.id === orderId ? { ...order, status: newStatus } : order
-      )
-    );
-    await axios.patch(`http://localhost:5000/orders/${orderId}`, {
-      status: newStatus
-    });
+    try {
+      setOrders(prev =>
+        prev.map(order =>
+          order.id === orderId ? { ...order, status: newStatus } : order
+        )
+      );
+      await axios.patch(`http://localhost:5000/orders/${orderId}`, {
+        status: newStatus
+      });
 
-    console.log(`Order ${orderId} updated to ${newStatus}`);
-  } catch (error) {
-    console.error("Failed to update order status:", error);
-  }
-};
+      console.log(`Order ${orderId} updated to ${newStatus}`);
+    } catch (error) {
+      console.error("Failed to update order status:", error);
+    }
+  };
 
 
   const getDateLineChart = () => {
@@ -55,14 +55,14 @@ function OrderDashboard() {
     orders.forEach(order => {
       const date = new Date(order.timestamp);
       const label = `${date.getDate().toString().padStart(2, '0')}-${(date.getMonth() + 1)
-        .toString().padStart(2, '0')}-${date.getFullYear()}`;
+        .toString().padStart(2, '0')}`;
       countByDate[label] = (countByDate[label] || 0) + 1;
     });
 
     const sortedLabels = Object.keys(countByDate).sort((a, b) => {
-      const [aD, aM, aY] = a.split('-').map(Number);
-      const [bD, bM, bY] = b.split('-').map(Number);
-      return new Date(aY, aM - 1, aD) - new Date(bY, bM - 1, bD);
+      const [aD, aM] = a.split('-').map(Number);
+      const [bD, bM] = b.split('-').map(Number);
+      return new Date(2025, aM - 1, aD) - new Date(2025, bM - 1, bD); // Use dummy year
     });
 
     return {
@@ -112,16 +112,18 @@ function OrderDashboard() {
   const renderOrders = (statusFilter) => (
     orders.filter(order => order.status === statusFilter).map(order => (
       <div key={order.id} className="order-card">
-        <p><strong>ID:</strong> {order.id}</p>
-        <p><strong>User:</strong> {order.user.name}</p>
-        <p><strong>Email:</strong> {order.user.email}</p>
+        <div className="div"><p><strong>ID:</strong> {order.id}</p>
+          <p><strong>User:</strong> {order.user.name}</p>
+          <p><strong>Email:</strong> {order.user.email}</p></div>
         <p><strong>Items:</strong><br></br>
-          {order.items.map((item,i)=>(
+          {order.items.map((item, i) => (
             <p key={i}>{item.title} <strong>⨉{item.quantity}</strong><br></br></p>
           ))}
         </p>
-        <p><strong>Amount:</strong> ₹{order.amount}</p>
-        <p><strong>Status:</strong> {order.status}</p>
+        <div className="div">
+          <p><strong>Amount:</strong> ₹{order.amount}</p>
+          <p><strong>Status:</strong> {order.status}</p>
+        </div>
         <div>
           {order.status === 'Ordered' && (
             <button onClick={() => handleStatusChange(order.id, 'Dispatched')}>Mark as Dispatched</button>
@@ -133,17 +135,65 @@ function OrderDashboard() {
       </div>
     ))
   );
-
+  const lineChartOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'bottom',
+        labels: {
+          color: '#333',
+          font: {
+            size: 14,
+            weight: 'bold',
+          },
+        },
+      },
+      tooltip: {
+        backgroundColor: '#222',
+        titleColor: '#fff',
+        bodyColor: '#eee',
+        cornerRadius: 6,
+        padding: 10,
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          color: '#eee',
+          borderDash: [4, 4],
+        },
+        ticks: {
+          color: '#555',
+          font: {
+            size: 12,
+          },
+        },
+      },
+      y: {
+        beginAtZero: true,
+        grid: {
+          color: '#f0f0f0',
+        },
+        ticks: {
+          color: '#555',
+          font: {
+            size: 12,
+          },
+        },
+      },
+    },
+  };
   return (
-    <div className="dashboard">
+    <div className="Order">
       <h1>Order Dashboard</h1>
 
       <div className="charts">
         <div className="chart">
-          <Line data={getDateLineChart()} />
+          <Line data={getDateLineChart()} options={lineChartOptions} />
         </div>
         <div className="chart">
-          <Line data={getProfitLineChart()} />
+          <Line data={getProfitLineChart()} options={lineChartOptions} />
         </div>
       </div>
 

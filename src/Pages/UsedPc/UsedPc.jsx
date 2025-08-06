@@ -12,8 +12,22 @@ function UsedPc() {
     const [search, setSearch] = useState("");
     const [filter, setFilter] = useState({});
 
-    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsToShow, setItemsToShow] = useState(12);
     const productsPerPage = 12;
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollHeight = document.documentElement.scrollHeight;
+            const scrollTop = document.documentElement.scrollTop;
+            const clientHeight = window.innerHeight;
+
+            if (scrollTop + clientHeight >= scrollHeight - 100) {
+                loadMoreItems();
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [products, itemsToShow]);
 
     useEffect(() => {
         axios.get("http://localhost:5000/products?section=Pc").then((res) => {
@@ -76,18 +90,18 @@ function UsedPc() {
                 setProducts(data);
             }
 
-            setCurrentPage(1); 
+
         }).catch((e) => {
             setError(true);
         });
     }, [search, sort, filter]);
 
-    const indexOfLastProduct = currentPage * productsPerPage;
-    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
-
-    const totalPages = Math.ceil(products.length / productsPerPage);
-    const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+    const loadMoreItems = () => {
+        if (itemsToShow < products.length) {
+            setItemsToShow(prev => prev + 12);
+        }
+    };
+    const currentProducts = products.slice(0, itemsToShow);
 
     const searchresults = (input) => {
         setSearch(input);
@@ -97,9 +111,6 @@ function UsedPc() {
         setSort(input);
     };
 
-    const handlePageChange = (number) => {
-        setCurrentPage(number);
-    };
 
     return (
         <>
@@ -149,17 +160,15 @@ function UsedPc() {
                         )}
                     </div>
                     <div className="bottom">
-                        {products.length > productsPerPage && (
+                        {products.length > productsPerPage && currentProducts.length !== products.length && (
                             <div className="pagination">
-                                {pageNumbers.map((number) => (
-                                    <button
-                                        key={number}
-                                        onClick={() => handlePageChange(number)}
-                                        className={currentPage === number ? 'active-page' : ''}
-                                    >
-                                        {number}
-                                    </button>
-                                ))}
+                                <div class="loading">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
                             </div>
                         )}
                     </div>

@@ -16,7 +16,7 @@ import CreateProduct from "../Admin/Pages/CreateProduct/CreateProduct";
 import EditProduct from "../Admin/Pages/EditProduct/EditProduct";
 import ProductDetials from "../Admin/Pages/ProductDetials/ProductDetials";
 import Orders from "../Admin/Pages/Orders/Orders"
-
+import { Navigate } from 'react-router-dom';
 function RoleAdmin() {
 
     const [alert, setAlert] = useState("");
@@ -52,6 +52,7 @@ function RoleAdmin() {
 
                     <Route path="*" element={<Error />} />
                 </Route>
+
             </Routes>
         </AlertContext.Provider >
     );
