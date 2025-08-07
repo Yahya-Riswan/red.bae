@@ -131,5 +131,5 @@ Welcome to **Red.Bae**, a full-stack E-Commerce web application built with **Rea
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/red-bae.git
+   git clone https://github.com/Yahya-Riswan/red-bae.git
    cd red-bae
