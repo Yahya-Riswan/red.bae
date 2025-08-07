@@ -11,7 +11,7 @@
     width: 100%;
     height: auto;
     aspect-ratio: 1920 / 722;
-    margin-bottom: 50px; 
+    margin-bottom: 50px;  
 }
 .home .spotlight h1{
     padding: 5% 4% 0;
@@ -36,13 +36,14 @@
     margin: 100px 0;
     background-color: lightgray;
 }
-.home .partners h1{
+.home .partners h2{
     font-family:secondary;
 }
 .home .partners .imgs{
     margin-top: 10px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
 }

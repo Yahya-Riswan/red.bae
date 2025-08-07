@@ -38,7 +38,7 @@ function Product() {
         setImage(product.image)
     }, [product]);
     const addToCart = async () => {
-        if (cartadded) {
+        if (cartadded) { 
             navigate("/Cart");
             return;
         }

@@ -1,0 +1,162 @@
+    .headers {
+        display: none;
+    }
+
+
+@media screen and (max-width:768px) {
+    .appcontent {
+        min-height: 100vh;
+        padding: 0 10px;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .divnavbar {
+        display: none !important;
+        width: 0 !important;
+    }
+
+    .admin {
+        flex-direction: column;
+    }
+
+    .headers {
+        width: 100vw;
+        padding: 0 20px;
+        height: 60px;
+        border-bottom: 2px solid #ddd;
+        background-color: white;
+        display: flex;
+        position: sticky !important;
+        top: 0 !important;
+        left: 0 !important;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .headers img {
+        height: 50px;
+    }
+
+    .headers .admenu {
+        height: 40px;
+        filter: invert(1);
+    }
+
+    .headers .adlogo {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .menu {
+        position: fixed;
+        top: 30px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 50px);
+        z-index: 99999999999;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu li {
+        color: black;
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        gap: 1rem;
+        font-size: 19px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+    .menu .active li {
+        color: black;
+        font-weight: 900;
+        background-color: white;
+    }
+
+    .icon {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    .icon.invert {
+        filter: invert(1);
+    }
+
+    .text {
+        max-height: 40px;
+    }
+
+    .menu .red {
+        color: red;
+    }
+
+
+    .search {
+        flex-wrap: wrap !important;
+    }
+
+    .search input {
+        width: 100% !important;
+    }
+
+    .search select {
+        width: 100% !important;
+    }
+
+    .user {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .user .det {
+        width: 100%;
+    }
+
+    .user>h4:nth-child(1) {
+        width: 3%;
+        display: none;
+    }
+
+    .user>h4:nth-child(2) {
+        width: 15%;
+        text-align: left;
+    }
+
+    .user>h4:nth-child(3) {
+        width: 100%;
+        text-align: left;
+    }
+
+    .user>h4:nth-child(4) {
+        width: 100%;
+        text-align: left;
+    }
+    .productdet{
+        flex-wrap: wrap !important;
+        justify-content: center;
+    }
+    .productdet .buttons{
+        width: 100%;
+        justify-content: center;
+    }
+    .createproduct .content{
+        width: 95% !important;
+    }
+    .createproduct .content .upload{
+        width: 100% !important;
+        height: auto !important;
+    }
+    .createproduct .content .title,
+    .createproduct .content .price,
+    .createproduct .content .desc{
+        width: 100%;
+    }
+}

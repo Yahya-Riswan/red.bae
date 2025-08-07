@@ -10,6 +10,7 @@ Welcome to **Red.Bae**, a full-stack E-Commerce web application built with **Rea
 
 - 🔐 Register & Login with secure user session.
 - 👑 Admin and User roles are separated.
+- 🔒 Protected Routes for different user roles.
 - 🧠 Sessions stored in **LocalStorage**.
 - 🚫 Unauthenticated users cannot add to cart or checkout.
 - 🔓 Logout clears cart, wishlist, and session.
@@ -20,7 +21,7 @@ Welcome to **Red.Bae**, a full-stack E-Commerce web application built with **Rea
 
 - 📦 Fetch products from JSON Server.
 - 🔎 Real-time search filtering by product title.
-- 🗂️ Category-based filtering (e.g., Sports, Casual, Formal).
+- 🗂️ Category-based filtering (e.g., Graphics Cards, RAM, HDD, etc.).
 - ⬇️ Sorting options (Price: Low to High, High to Low, Newest).
 - 🛑 Duplicate product prevention.
 
@@ -38,7 +39,7 @@ Welcome to **Red.Bae**, a full-stack E-Commerce web application built with **Rea
 ### 🛍️ 4. Cart Functionality
 
 - 🧑 Each user has a separate cart.
-- ♻️ Persisted across sessions using LocalStorage.
+- ♻️ Cart persisted across sessions using LocalStorage.
 - ➕ Increment/decrement item quantity.
 - ❌ Remove items individually.
 - 💰 Real-time total price calculation.
@@ -46,53 +47,72 @@ Welcome to **Red.Bae**, a full-stack E-Commerce web application built with **Rea
 
 ---
 
-### 💳 5. Checkout & Payment
+### 💳 5. Checkout & Order Management
 
-- 🧾 Dummy checkout flow to simulate payment.
+- 🧾 Dummy checkout to simulate payment.
 - ✅ After payment:
-  - Empties cart
-  - Saves order to order history
-  - Displays success message
+  - Cart is emptied.
+  - Order saved to order history.
+  - Success message shown.
+
+---
+
+## 🧑‍💼 Admin Panel
+
+### 🧠 6. Admin Dashboard
+
+- 📊 View statistics: total users, total orders, total products, reviews.
+- 📈 Graphs using Chart.js:
+  - Orders per day
+  - Sales volume
+  - New user signups
+- 🔎 Filter stats by date range or month.
+
+### ➕ 7. Admin Management Tools
+
+- ➕ Add new products via admin panel.
+- ✏️ Edit existing product details.
+- ❌ Soft Delete products (set `isDeleted: true` instead of removing).
+- 👤 Add users with custom roles (admin/user).
+- 🗑️ Soft delete users to revoke access without full deletion.
+- 🔄 Restore soft-deleted users or products.
+
+---
+
+## 🌐 Protected Routes
+
+- 🔒 Routes are guarded based on role:
+  - `/admin/*` routes only accessible by admins.
+  - `/cart`, `/checkout`, `/orders` only for logged-in users.
 
 ---
 
 ## ⭐ Bonus Features
 
-- ⭐ Add product ratings and written reviews
-- 📊 Dynamically update average ratings
-- 🖼️ Datalist product suggestions
-- ✨ Animated alerts
-
+- 🌟 Product reviews with star rating.
+- 📉 Datalist suggestions in search bar.
+- ✨ Animated toast alerts for actions.
+- 📧 Email-like admin notifications.
+- 🎯 Mobile responsive with adaptive design.
 
 ---
 
 ## 🖼️ Screenshots
 
 ### 🏠 Homepage  
-A clean and responsive landing page showing featured products and navigation.
-
 ![Homepage](./ScreenShots/2.png)
 
----
-
 ### 🛍️ Products Page  
-Browse all available used PCs, laptops, and parts. Includes search, sort, and filters.
-
 ![Products](./ScreenShots/3.png)
 
----
-
 ### 🔍 Product Detail Page  
-Shows product description, pricing, images, and review options.
-
 ![Product Detail](./ScreenShots/4.png)
 
----
-
 ### 🛒 Cart Page  
-Displays items added to the cart with quantity controls and total cost.
-
 ![Cart](./ScreenShots/1.png)
+
+### 📊 Admin Dashboard  
+![Dashboard](./ScreenShots/dashboard.png)
 
 ---
 
@@ -100,9 +120,10 @@ Displays items added to the cart with quantity controls and total cost.
 
 - **Frontend:** React, CSS, Axios  
 - **Backend:** JSON Server  
-- **State:** React Hooks, LocalStorage  
-- **Routing:** React Router  
-- **Icons & UI:** Custom + External Icon Packs  
+- **State Management:** React Hooks, Context API, LocalStorage  
+- **Routing:** React Router v6  
+- **Data Viz:** Chart.js  
+- **Icons/UI:** Custom SVGs + External Packs (e.g., FontAwesome)
 
 ---
 

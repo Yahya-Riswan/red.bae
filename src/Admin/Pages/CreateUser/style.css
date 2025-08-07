@@ -1,5 +1,5 @@
 .login-container {
-    width: 100%;
+    width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,7 @@
 }
 
 .login-form {
-  width: 100%;
+  width: 100vw;
   max-width: 400px;
   background-color: #ffffff;
   padding: 40px;

@@ -10,7 +10,7 @@ import gigabyte from "../../Assets/gigabyte.png"
 import nvidia from "../../Assets/nvidia.png"
 import intel from "../../Assets/intel.png"
 import policy from "../../Assets/policy_banner.png"
-import Product from '../../Components/Product/Product'
+import Product from '../../Components/Product/Product' 
 import Howwe from "../../Assets/how_banner.png"
 
 

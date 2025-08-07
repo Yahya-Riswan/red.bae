@@ -26,6 +26,7 @@
 .account-container .navs{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 30px;
 }
 .account-container .navs .btns{

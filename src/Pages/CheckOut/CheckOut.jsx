@@ -62,63 +62,81 @@ function CheckOut() {
 
   const Order = async () => {
     const localUser = JSON.parse(localStorage.getItem("currentUser"));
-    const checkoutOrders = JSON.parse(sessionStorage.getItem("order_checkout_data")) || [];
+    const checkoutOrders = JSON.parse(sessionStorage.getItem("order_checkout_data") || "[]");
 
-    if (localUser?.id) {
-      try {
+    if (!localUser?.id) {
+      navigate("/Login");
+      return;
+    }
 
-        const res = await axios.get(`http://localhost:5000/users/${localUser.id}`);
-        const existingUser = res.data;
-        const existingOrders = Array.isArray(existingUser.orders) ? existingUser.orders : [];
+    if (!payment || payment === "none") {
+      setAlert("Please select a valid payment method.");
+      setAlertSt("error");
+      return;
+    }
 
-        const newOrder = {
-          id: Date.now(),
-          items: checkoutOrders,
-          timestamp: new Date().toISOString(),
-          paymentMethod: payment,
-          paymentValue: paymentval,
-          amount: Math.round(total + ((total / 100) * 18) - discount),
-          status: "Ordered",
-          user: {
-            id: existingUser.id,
-            name: existingUser.name,
-            email: existingUser.email
-          }
-        };
+    if (!pay) {
+      setAlert("Invalid or incomplete payment information.");
+      setAlertSt("error");
+      return;
+    }
 
-        const updatedUser = {
-          ...existingUser,
-          cart: [],
-          orders: [...existingOrders, newOrder]
-        };
+    try {
+      // Fetch existing user
+      const res = await axios.get(`http://localhost:5000/users/${localUser.id}`);
+      const existingUser = res.data;
+      const existingOrders = Array.isArray(existingUser.orders) ? existingUser.orders : [];
 
-        await axios.put(`http://localhost:5000/users/${localUser.id}`, updatedUser);
-
-
-        await axios.post(`http://localhost:5000/orders`, newOrder);
-
-
-        localStorage.removeItem("cart");
-        sessionStorage.removeItem("order_checkout_data");
-        if (JSON.parse(localStorage.getItem("orders")).length > 0) {
-          let data = JSON.parse(localStorage.getItem("orders"))
-          let updateddata = [...data, newOrder]
-          localStorage.setItem("orders", JSON.stringify(updateddata));
-        } else {
-          localStorage.setItem("orders", JSON.stringify([newOrder]));
+      // Create new order
+      const newOrder = {
+        id: Date.now().toString(), // or use uuid() if preferred
+        items: checkoutOrders,
+        timestamp: new Date().toISOString(),
+        paymentMethod: payment,
+        paymentValue: paymentval,
+        amount: Math.round(total + ((total / 100) * 18) - discount),
+        status: "Ordered",
+        user: {
+          id: existingUser.id,
+          name: existingUser.name,
+          email: existingUser.email
         }
-        setLocal(prev => ({ ...prev, cart: [] }));
-        setAlert("Products Ordered .")
-        setAlertSt("success")
-        navigate("/Orders")
-      } catch (error) {
-        setAlert("Order failed .")
-        setAlertSt("error")
-        console.error("❌ Order failed:", error);
+      };
 
-      }
-    } else {
-      navigate("/Login")
+      // Update user object with new order
+      const updatedUser = {
+        ...existingUser,
+        cart: [],
+        orders: [...existingOrders, newOrder]
+      };
+
+      // Save updated user
+      await axios.put(`http://localhost:5000/users/${localUser.id}`, updatedUser);
+
+      // Add order to orders DB
+      await axios.post(`http://localhost:5000/orders`, newOrder);
+
+      // Local cleanup
+      localStorage.removeItem("cart");
+      sessionStorage.removeItem("order_checkout_data");
+
+      // LocalStorage: Add order to local 'orders' if any
+      const localOrders = JSON.parse(localStorage.getItem("orders") || "[]");
+      const updatedOrders = [...localOrders, newOrder];
+      localStorage.setItem("orders", JSON.stringify(updatedOrders));
+
+      // Context & UI
+      setLocal(prev => ({ ...prev, cart: [] }));
+      setAlert("Products Ordered.");
+      setAlertSt("success");
+
+      // Navigate to Orders
+      navigate("/Orders");
+
+    } catch (error) {
+      setAlert("Order failed.");
+      setAlertSt("error");
+      console.error("❌ Order failed:", error);
     }
   };
 

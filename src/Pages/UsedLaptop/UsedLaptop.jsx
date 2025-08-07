@@ -26,7 +26,7 @@ function UsedPc() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [products, itemsToShow]);
     useEffect(() => {
-        axios.get("http://localhost:5000/products?section=Laptop").then((res) => {
+        axios.get("http://localhost:5000/products?section=Laptop&status=active").then((res) => {
             if (search) {
                 res.data = res.data.filter(product =>
                     product.title.toLowerCase().includes(search.toLowerCase())
@@ -143,7 +143,7 @@ function UsedPc() {
                     <div className="bottom">
                         {products.length > productsPerPage && currentProducts.length !== products.length && (
                             <div className="pagination">
-                                <div class="loading">
+                                <div className="loading">
                                     <span></span>
                                     <span></span>
                                     <span></span>

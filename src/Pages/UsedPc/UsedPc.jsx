@@ -30,7 +30,7 @@ function UsedPc() {
     }, [products, itemsToShow]);
 
     useEffect(() => {
-        axios.get("http://localhost:5000/products?section=Pc").then((res) => {
+        axios.get("http://localhost:5000/products?section=Pc&status=active").then((res) => {
             let data = res.data;
 
             // Search
@@ -162,7 +162,7 @@ function UsedPc() {
                     <div className="bottom">
                         {products.length > productsPerPage && currentProducts.length !== products.length && (
                             <div className="pagination">
-                                <div class="loading">
+                                <div className="loading">
                                     <span></span>
                                     <span></span>
                                     <span></span>

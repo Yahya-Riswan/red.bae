@@ -25,7 +25,7 @@ import Orders from "../Pages/Orders/Orders";
 import AddReview from "../Pages/AddReview/AddReview";
 import Alert from "../Components/Alert/Alert";
 
-
+import "./media.css"
 function RoleUser() {
     const [user, setUser] = useState("");
     const [nav, setnav] = useState(true);

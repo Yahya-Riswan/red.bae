@@ -1,60 +1,73 @@
-.appcontent{
-    min-height: 100vh;
-    padding: 80px 10%;
+.appcontent {
+  min-height: 100vh;
+  padding: 80px 10%;
 }
-.showproducts{
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: row;
+
+
+
+.showproducts {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
 }
-.showproducts .left{
-    padding-top: 30px;
-    width: 20%;
-    border-right: 1px solid #ddd;
+
+.showproducts .left {
+  padding-top: 30px;
+  width: 20%;
+  border-right: 1px solid #ddd;
 }
-.showproducts .right{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+.showproducts .right {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.showproducts .right .top{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+.showproducts .right .top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
-.noproducts{
-    text-align: center;
-    margin-top: 50px;
-    color: grey;
-    font-family: subsecondary;
+
+.noproducts {
+  text-align: center;
+  margin-top: 50px;
+  color: grey;
+  font-family: subsecondary;
 }
-.filter{
-    width: 100%;
+
+.filter {
+  width: 100%;
 
 }
-.filterbox{
-    padding: 10px 10px;
-    margin: 10px;
-    border-bottom: 1px solid #ddd;
+
+.filterbox {
+  padding: 10px 10px;
+  margin: 10px;
+  border-bottom: 1px solid #ddd;
 }
-.filterbox h3{
-    font-size: 15px;
-    text-align: center;
-    margin-bottom: 5px;
+
+.filterbox h3 {
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 5px;
 }
-.filterbox h4{
-    color: #000;
-    font-size: 13px;
-    text-align: center;
+
+.filterbox h4 {
+  color: #000;
+  font-size: 13px;
+  text-align: center;
 
 }
-.filterbox input[type="number"]{
-    width: 100%;
-    padding: 5px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
+
+.filterbox input[type="number"] {
+  width: 100%;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
 }
+
 /* For Chrome, Safari, Edge, and Opera */
 .no-arrows::-webkit-outer-spin-button,
 .no-arrows::-webkit-inner-spin-button {
@@ -66,6 +79,7 @@
 .no-arrows {
   -moz-appearance: textfield;
 }
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -85,6 +99,7 @@
   background-color: black;
   color: white;
 }
+
 /* Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
@@ -97,59 +112,63 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.err{
-    color:red;
+.err {
+  color: red;
 }
-/* From Uiverse.io by satyamchaudharydev */ 
+
+/* From Uiverse.io by satyamchaudharydev */
 .loading {
- --speed-of-animation: 0.9s;
- --gap: 6px;
- --first-color: #4c86f9;
- --second-color: #49a84c;
- --third-color: #f6bb02;
- --fourth-color: #f6bb02;
- --fifth-color: #2196f3;
- display: flex;
- justify-content: center;
- align-items: center;
- width: 100px;
- gap: 6px;
- height: 100px;
+  --speed-of-animation: 0.9s;
+  --gap: 6px;
+  --first-color: #4c86f9;
+  --second-color: #49a84c;
+  --third-color: #f6bb02;
+  --fourth-color: #f6bb02;
+  --fifth-color: #2196f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  gap: 6px;
+  height: 100px;
 }
 
 .loading span {
- width: 4px;
- height: 50px;
- background: var(--first-color);
- animation: scale var(--speed-of-animation) ease-in-out infinite;
+  width: 4px;
+  height: 50px;
+  background: var(--first-color);
+  animation: scale var(--speed-of-animation) ease-in-out infinite;
 }
 
 .loading span:nth-child(2) {
- background: var(--second-color);
- animation-delay: -0.8s;
+  background: var(--second-color);
+  animation-delay: -0.8s;
 }
 
 .loading span:nth-child(3) {
- background: var(--third-color);
- animation-delay: -0.7s;
+  background: var(--third-color);
+  animation-delay: -0.7s;
 }
 
 .loading span:nth-child(4) {
- background: var(--fourth-color);
- animation-delay: -0.6s;
+  background: var(--fourth-color);
+  animation-delay: -0.6s;
 }
 
 .loading span:nth-child(5) {
- background: var(--fifth-color);
- animation-delay: -0.5s;
+  background: var(--fifth-color);
+  animation-delay: -0.5s;
 }
 
 @keyframes scale {
- 0%, 40%, 100% {
-  transform: scaleY(0.05);
- }
 
- 20% {
-  transform: scaleY(1);
- }
+  0%,
+  40%,
+  100% {
+    transform: scaleY(0.05);
+  }
+
+  20% {
+    transform: scaleY(1);
+  }
 }

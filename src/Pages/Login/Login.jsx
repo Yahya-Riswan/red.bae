@@ -4,8 +4,10 @@ import "./style.css"
 import axios from 'axios';
 import UserContext from '../../Context/UserContext';
 import AlertContext from '../../Context/AlertContext';
+import AdminContext from '../../Context/AdminContext';
 function Login() {
     const { setAlert, setAlertSt } = useContext(AlertContext)
+    const { admin, setAdmin } = useContext(AdminContext)
 
     const [form, setForm] = useState({ email: "", password: "" });
     const [errors, setErrors] = useState({});
@@ -45,7 +47,8 @@ function Login() {
 
             if (user) {
                 if (user.role === "admin") {
-                    localStorage.setItem("currentUser", JSON.stringify(user));
+                    // sessionStorage.setItem("currentUser", JSON.stringify(user));
+                    setAdmin(user)
                     setAlert("Logined Successfully");
                     setAlertSt("success");
                     navigate("/Admin/Dashboard");
@@ -112,7 +115,11 @@ function Login() {
     return (
         <div className="login-container">
             <form onSubmit={handleSubmit} className="login-form">
-                <h2>Login</h2>
+                <div className="top">
+                    <Link to={"/"}><b>←</b> Go Back</Link>
+                    <h2>Login</h2>
+
+                </div>
 
                 <div className={`input-box`}>
                     <input

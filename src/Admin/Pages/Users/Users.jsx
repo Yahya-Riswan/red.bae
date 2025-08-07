@@ -36,11 +36,12 @@ function Users() {
   const [allUsers, setUsers] = useState([]);
   const [userdata, setUserData] = useState([]);
   const [lineChartData, setLineChartData] = useState({});
+  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState('all');
   const { setAlert, setAlertSt } = useContext(AlertContext)
   useEffect(() => {
     callUsers();
   }, []);
-
   const callUsers = async () => {
     try {
       let data = await axios.get('http://localhost:5000/users?role=user');
@@ -62,7 +63,7 @@ function Users() {
         {
           label: 'User Status',
           data: [active, nonActive],
-          backgroundColor: ['rgb(0, 157, 255)', '#ddd'],
+          backgroundColor: ['#00cc88', '#ddd'],
           borderColor: ['#fff', '#fff'],
           borderWidth: 1,
         },
@@ -94,8 +95,8 @@ function Users() {
         {
           label: 'Users Joined',
           data: sortedLabels.map((label) => joinCount[label]),
-          borderColor: 'rgb(0, 157, 255)',
-          backgroundColor: 'rgba(0, 157, 255, 0.2)',
+          borderColor: '#00cc88',
+          backgroundColor: 'rgba(0, 255, 102, 0.2)',
           tension: 0.4,
           fill: true,
         },
@@ -159,51 +160,77 @@ function Users() {
     <div className="users">
       <h1>Users</h1>
 
-      {/* Flex container for charts */}
-      <div style={{ display: 'flex', gap: '40px', marginBottom: '30px' }}>
-        {/* Doughnut Chart */}
+
+      <div style={{ display: 'flex', gap: '40px', marginBottom: '30px', flexWrap:"wrap",justifyContent:"center" }}>
+
         <div style={{ width: '200px', height: '200px' }}>
           {userdata?.datasets && <Doughnut data={userdata} options={circlechartOptions} />}
           <h3 style={{ textAlign: 'center' }}>{allUsers.length} Users</h3>
         </div>
 
-        {/* Line Chart */}
+
         <div style={{ width: '400px', height: '300px' }}>
           {lineChartData?.datasets && <Line data={lineChartData} options={linechartOptions} />}
         </div>
       </div>
+      <div className="search">
+        <input
+          type="search"
+          placeholder="Search Here"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+          <option value="all">All</option>
+          <option value="active">Active</option>
+          <option value="non-active">Non-Active</option>
+        </select>
+      </div>
 
-      {/* User list */}
       <div className="content">
-        {[...allUsers].reverse().map((user, index) => (
-          <div className="user" key={user._id || user.id}>
-            <h4>{index + 1}</h4>
-            <h4>{user.username}</h4>
-            <h4>{user.email}</h4>
-            <h4>
-              {user.last_logined}
-              <br />
-              <pre>Last Logined</pre>
-            </h4>
-            <div className="det">
+        {[...allUsers]
+          .filter(user => {
+            if (filter === "active") return user.status.toLowerCase() === "active";
+            if (filter === "non-active") return user.status.toLowerCase() === "non-active";
+            return true; // all
+          })
+          .filter(user => {
+            const query = search.toLowerCase(); 
+            return (
+              user.username?.toLowerCase().includes(query) ||
+              user.email?.toLowerCase().includes(query)
+            );
+          })
+          .reverse()
+          .map((user, index) => (
+            <div className="user" key={user._id || user.id}>
+              <h4>{index + 1}</h4>
+              <h4>{user.username}</h4>
+              <h4>{user.email}</h4>
               <h4>
-                <img src={cart} alt="" /> {user.cart?.length || 0}
+                {user.last_logined}
+                <br />
+                <pre>Last Logined</pre>
               </h4>
-              <h4>
-                <img src={heart} alt="" /> {user.wishlist?.length || 0}
-              </h4>
-              <h4>
-                <img src={order} alt="" className="invert" /> {user.orders?.length || 0}
-              </h4>
+              <div className="det">
+                <h4>
+                  <img src={cart} alt="" /> {user.cart?.length || 0} 
+                </h4>
+                <h4>
+                  <img src={heart} alt="" /> {user.wishlist?.length || 0}
+                </h4>
+                <h4>
+                  <img src={order} alt="" className="invert" /> {user.orders?.length || 0}
+                </h4>
+              </div>
+              <div className="buttons">
+                <button onClick={() => userstatus(user)} className={user.status}>
+                  {user.status}
+                </button>
+                <button className="view" onClick={() => View(user.id)}>View</button>
+              </div>
             </div>
-            <div className="buttons">
-              <button onClick={() => userstatus(user)} className={user.status}>
-                {user.status}
-              </button>
-              <button className="view" onClick={() => View(user.id)}>View</button>
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
 
       <Link to={"/Admin/CreateUser"} className="adduser">

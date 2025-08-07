@@ -1,5 +1,5 @@
 .Order {
-    width: 100%;
+  width: 100%;
   padding: 50px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f9f9f9;
@@ -14,8 +14,9 @@
 }
 
 .charts {
+
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
   margin-bottom: 2rem;
@@ -28,6 +29,7 @@
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .Order h2 {
@@ -35,13 +37,16 @@
   font-size: 1.5rem;
   color: #444;
   border-bottom: 2px solid #ddd;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.5rem; 
 }
-.Order .div{
+
+.Order .div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
+
 .order-card {
   background: #fff;
   padding: 1.2rem 1.5rem;
@@ -78,4 +83,28 @@
 
 .order-card button:hover {
   background-color: #0077cc;
+}
+
+.Order .search {
+  width: 100%;
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+  gap: 20px;
+}
+
+.Order .search input {
+  width: 60%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid #0077cc;
+}
+
+.Order .search select {
+  width: 20%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 2px solid #009dff;
 }

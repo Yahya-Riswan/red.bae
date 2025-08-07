@@ -36,6 +36,8 @@ function UsedPc() {
   const [lineChartData, setLineChartData] = useState({});
   const [pop, setPop] = useState("")
   const [popid, setPopId] = useState("")
+  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState('all');
   const { setAlert, setAlertSt } = useContext(AlertContext)
   const callProducts = async () => {
     try {
@@ -65,7 +67,7 @@ function UsedPc() {
         {
           label: 'Product Status',
           data: [active, nonActive],
-          backgroundColor: ['rgb(0, 157, 255)', '#ddd'],
+          backgroundColor: ['rgba(255, 193, 7, 0.7)', '#ddd'],
           borderColor: ['#fff', '#fff'],
           borderWidth: 1,
         },
@@ -101,8 +103,8 @@ function UsedPc() {
         {
           label: 'Products Added',
           data: sortedLabels.map((label) => dateCount[label]),
-          borderColor: 'rgb(0, 157, 255)',
-          backgroundColor: 'rgba(0, 157, 255, 0.2)',
+          borderColor: 'rgba(255, 193, 7, 0.7)',
+          backgroundColor: 'rgba(255, 145, 0, 0.2)',
           tension: 0.4,
           fill: true,
         },
@@ -158,11 +160,11 @@ function UsedPc() {
       console.log(e);
     }
   }
-  const removepop=(id)=>{
-    setPop("Are You Sure To Remove "+id)
+  const removepop = (id) => {
+    setPop("Are You Sure To Remove " + id)
     setPopId(id)
   }
-  const remove = async(id)=>{
+  const remove = async (id) => {
     try {
       let data = await axios.delete(`http://localhost:5000/products/${popid}`)
       setAlert(`Product Removed`);
@@ -184,7 +186,7 @@ function UsedPc() {
           <div className="content">
             <h3>{pop}</h3>
             <div className="btns">
-              <button className="cancel" onClick={()=>{setPop("");setPopId("")}}>Cancel</button>
+              <button className="cancel" onClick={() => { setPop(""); setPopId("") }}>Cancel</button>
               <button className='delete' onClick={remove}>Delete</button>
             </div>
           </div>
@@ -192,23 +194,48 @@ function UsedPc() {
       }
       <h1>Used Pc</h1>
 
-      <div style={{ display: 'flex', gap: '40px', margin: '30px 0' }}>
-        {/* Doughnut Chart - Product Status */}
+      <div style={{ display: 'flex', gap: '40px', margin: '30px 0' ,flexWrap:"wrap",justifyContent:"center" }}>
+
         <div style={{ width: '200px', height: '200px' }}>
           {doughnutData?.datasets && <Doughnut data={doughnutData} options={chartOptionscircle} />}
           <h3 style={{ textAlign: 'center' }}>{products.length} Products</h3>
         </div>
 
-        {/* Line Chart - Product Add Date */}
+
         <div style={{ width: '400px', height: '300px' }}>
           {lineChartData?.datasets && <Line data={lineChartData} options={chartOptions} />}
         </div>
       </div>
 
-      {/* Product List */}
+      <div className="search">
+        <input
+          type="search"
+          placeholder="Search Here"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+          <option value="all">All</option>
+          <option value="active">Active</option>
+          <option value="non-active">Non-Active</option>
+        </select>
+      </div>
+
       <div className="content">
         {
-          [...products].reverse().map((product) => (
+          [...products].filter(product => {
+            if (filter === "active") return product.status.toLowerCase() === "active";
+            if (filter === "non-active") return product.status.toLowerCase() === "non-active";
+            return true; // all
+          })
+          .filter(product => {
+            const query = search.toLowerCase();
+            return (
+              product.title?.toLowerCase().includes(query) ||
+              product.price?.toLowerCase().includes(query) ||
+              product.desc?.toLowerCase().includes(query) 
+            );
+          }).reverse().map((product) => (
             <Product
               key={product.id}
               id={product.id}
@@ -224,7 +251,7 @@ function UsedPc() {
         }
       </div>
 
-      {/* Add Product Link */}
+  
       <Link to={"/Admin/CreateProduct/Pc"} className="addproduct">
         <img src={addproduct} alt="Add Product" />
       </Link>

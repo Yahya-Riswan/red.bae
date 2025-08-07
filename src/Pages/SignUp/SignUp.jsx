@@ -77,7 +77,11 @@ const SignUp = () => {
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit} className="login-form">
-        <h2>Sign Up</h2>
+        <div className="top">
+          <Link to={"/Login"}><b>←</b> Go Back</Link>
+          <h2>SignUp</h2>
+
+        </div>
 
         <div className={`input-box`}>
           <input

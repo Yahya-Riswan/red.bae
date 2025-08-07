@@ -4,6 +4,7 @@
 .productpage .maincontent{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 .productpage .maincontent .left{
     width: 40%;
@@ -12,7 +13,7 @@
     justify-content: center;
     align-items: center;
     height: 70vh;
-    border: 1px solid #ddd;
+    border: 1px solid #ddd; 
     position: relative;
 }
 .productpage .maincontent .left .img{
